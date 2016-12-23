@@ -1,0 +1,11 @@
+@CHARSET "UTF-8";
+
+table {
+	top: 50%;
+	left: 50%;
+	width: 450px;
+	height: 450px;
+	position: absolute;
+	margin-top: -225px;
+	margin-left: -225px;
+}

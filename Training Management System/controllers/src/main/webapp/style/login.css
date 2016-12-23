@@ -1,0 +1,31 @@
+@CHARSET "UTF-8";
+
+table {
+	top: 50%;
+	left: 50%;
+	width: 450px;
+	height: 260px;
+	position: absolute;
+	margin-top: -130px;
+	margin-left: -225px;
+}
+
+.font {
+	text-align: center;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 20pt;
+}
+
+.border {
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+	padding: 20px;
+	border-radius: 5px;
+}
+
+body {
+	background-image: url(../image/bg.jpeg);
+	background-position: left bottom;
+	background-repeat: repeat;
+}
