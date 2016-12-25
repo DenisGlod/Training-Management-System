@@ -21,12 +21,12 @@
 						<div class="font"><a href="login.html" style="text-decoration: none">Training Management System</a></div>
 						<hr>
 						<c:if test="${userLogin.getErrorStatus()}">
-								<div class="alert alert-danger alert-dismissible" role="alert">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<c:forEach var="message" items="${userLogin.getErrorMessage()}">
-										<strong><c:out value="${message}"><br></c:out></strong>
-									</c:forEach>
-								</div>
+							<div class="alert alert-danger alert-dismissible" role="alert" id="errorMesssage">
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<c:forEach var="message" items="${userLogin.getErrorMessage()}">
+									<strong><c:out value="${message}"><br></c:out></strong>
+								</c:forEach>
+							</div>
 							<c:remove var="userLogin"/>
 						</c:if>
 						<div class="form-group">

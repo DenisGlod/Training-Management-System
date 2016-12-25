@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class ConnectionPool {
 	private static final String DB_NAME_DRIVER = "com.mysql.jdbc.Driver";
-	private static final String DB_URL = "jdbc:mysql://localhost:3306/tms_db";
+	private static final String DB_URL = "jdbc:mysql://localhost:3306/tms_db?useSSL=false";
 	private static final String DB_LOGIN = "user";
 	private static final String DB_PASSWORD = "user";
 
