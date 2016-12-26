@@ -59,6 +59,8 @@ public class AdminController extends HttpServlet {
     private final String DELETE_DATA_GROUP = "delete data group";
 
     private final String ERROR_MESSAGE = "Error! Some fields are not filled.";
+    
+    private final String TABLE_STATUS = "tableStatus";
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
@@ -428,7 +430,7 @@ public class AdminController extends HttpServlet {
 	    tableStatusBean = new TableStatusBean(true, false, false, false);
 	    break;
 	}
-	session.setAttribute("tableStatus", tableStatusBean);
+	session.setAttribute(TABLE_STATUS, tableStatusBean);
 	response.sendRedirect("admin.html");
     }
 
