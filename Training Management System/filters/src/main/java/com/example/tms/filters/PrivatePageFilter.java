@@ -19,6 +19,7 @@ import com.example.tms.beans.UserBean;
 public class PrivatePageFilter implements Filter {
 
 	public void destroy() {
+	    // NOOP
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -37,6 +38,7 @@ public class PrivatePageFilter implements Filter {
 	}
 
 	public void init(FilterConfig fConfig) throws ServletException {
+	    // NOOP
 	}
 
 }
