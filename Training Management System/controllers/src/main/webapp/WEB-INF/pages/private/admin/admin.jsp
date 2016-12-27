@@ -34,18 +34,18 @@
 				<button type="submit" class="btn btn-info" name="groups table" value="groups table">Groups Table</button>
 				<button type="submit" class="btn btn-info" name="data groups table" value="data groups table">Data Groups Table</button>
 			</div>
-			<c:if test="${tableStatus.getUsersTableStatus()}">
+			<div id="user-table">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/user-table.jsp"></jsp:include>
-			</c:if>	
-			<c:if test="${tableStatus.getCoursesTableStatus()}">
+			</div>
+			<div id="course-table" hidden="hidden">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/course-table.jsp"></jsp:include>
-			</c:if>	
-			<c:if test="${tableStatus.getGroupsTableStatus()}">
+			</div>
+			<div id="group-table" hidden="hidden">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/group-table.jsp"></jsp:include>
-			</c:if>		
-			<c:if test="${tableStatus.getDataGroupsTableStatus()}">
+			</div>
+			<div id="data-group-table" hidden="hidden">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/data-group-table.jsp"></jsp:include>
-			</c:if>			
+			</div>				
 		</div>
 	</form>
 </body>

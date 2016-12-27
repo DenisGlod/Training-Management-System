@@ -29,7 +29,7 @@
 				<button type="submit" class="btn btn-warning" name="add course" value="add course">Add Course</button><br><br>
 				<div class="center">
 					<div class="size_for_alert">
-						<c:if test="${course.getErrorStatus()}">
+						<c:if test="${course.getErrorStatus()}">	
 							<div class="alert alert-danger alert-dismissible" role="alert">
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 								<c:forEach var="message" items="${course.getErrorMessage()}">
@@ -44,7 +44,7 @@
 									<strong><c:out value="${message}"><br></c:out></strong>
 								</c:forEach>
 							</div>	
-						</c:if>	
+						</c:if>
 					</div>
 					<c:if test="${addStatusCourse}">
 						<label>Add New Course</label>
