@@ -15,7 +15,6 @@ import org.apache.commons.lang3.StringUtils;
 import com.example.tms.beans.CourseBean;
 import com.example.tms.beans.DataGroupBean;
 import com.example.tms.beans.GroupBean;
-import com.example.tms.beans.TableStatusBean;
 import com.example.tms.beans.UserBean;
 import com.example.tms.services.CoursesService;
 import com.example.tms.services.DataGroupsService;
@@ -28,10 +27,6 @@ public class AdminController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     private final String LOG_OUT = "log out";
-    private final String USERS_TABLE = "users table";
-    private final String COURSES_TABLE = "courses table";
-    private final String GROUPS_TABLE = "groups table";
-    private final String DATA_GROUPS_TABLE = "data groups table";
 
     private final String ADD_USER = "add user";
     private final String ADD_COURSE = "add course";
@@ -59,18 +54,12 @@ public class AdminController extends HttpServlet {
     private final String DELETE_DATA_GROUP = "delete data group";
 
     private final String ERROR_MESSAGE = "Error! Some fields are not filled.";
-    
-    private final String TABLE_STATUS = "tableStatus";
 
     protected void service(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	HttpSession session = request.getSession();
 	Boolean firstInput = (Boolean) session.getAttribute("firstInput");
 	String logOut = request.getParameter(LOG_OUT);
-	String buttonUsersTable = request.getParameter(USERS_TABLE);
-	String buttonCoursesTable = request.getParameter(COURSES_TABLE);
-	String buttonGroupsTable = request.getParameter(GROUPS_TABLE);
-	String buttonDataGroupsTable = request.getParameter(DATA_GROUPS_TABLE);
 
 	String addUser = request.getParameter(ADD_USER);
 	String addCourse = request.getParameter(ADD_COURSE);
@@ -103,18 +92,6 @@ public class AdminController extends HttpServlet {
 	} else {
 	    if (StringUtils.isNoneBlank(logOut)) {
 		actions(request, response, LOG_OUT);
-	    }
-	    if (StringUtils.isNoneBlank(buttonUsersTable)) {
-		actions(request, response, USERS_TABLE);
-	    }
-	    if (StringUtils.isNoneBlank(buttonCoursesTable)) {
-		actions(request, response, COURSES_TABLE);
-	    }
-	    if (StringUtils.isNoneBlank(buttonGroupsTable)) {
-		actions(request, response, GROUPS_TABLE);
-	    }
-	    if (StringUtils.isNoneBlank(buttonDataGroupsTable)) {
-		actions(request, response, DATA_GROUPS_TABLE);
 	    }
 	    if (StringUtils.isNoneBlank(addUser)) {
 		actions(request, response, ADD_USER);
@@ -186,7 +163,6 @@ public class AdminController extends HttpServlet {
     private void actions(HttpServletRequest request, HttpServletResponse response, String key, String data)
 	    throws IOException {
 	HttpSession session = request.getSession();
-	TableStatusBean tableStatusBean = null;
 	UsersService usersService = ServiceFactory.getFactory().getUserService();
 	CoursesService coursesService = ServiceFactory.getFactory().getCoursesService();
 	GroupsService groupsService = ServiceFactory.getFactory().getGroupsService();
@@ -196,50 +172,17 @@ public class AdminController extends HttpServlet {
 	    session.invalidate();
 	    response.sendRedirect("index.html");
 	    return;
-	case USERS_TABLE:
-	    session.setAttribute("userTable", usersService.loadAllUsers());
-	    session.setAttribute("addStatus", false);
-	    session.setAttribute("editStatus", false);
-	    session.removeAttribute("editUser");
-	    session.removeAttribute("user");
-	    tableStatusBean = new TableStatusBean(true, false, false, false);
-	    break;
-	case COURSES_TABLE:
-	    session.setAttribute("coursesTable", coursesService.loadAllCourses());
-	    session.setAttribute("addStatusCourse", false);
-	    session.setAttribute("editStatusCourse", false);
-	    session.removeAttribute("editCourse");
-	    session.removeAttribute("course");
-	    tableStatusBean = new TableStatusBean(false, true, false, false);
-	    break;
-	case GROUPS_TABLE:
-	    session.setAttribute("groupsTable", groupsService.loadAllGroups());
-	    session.setAttribute("addStatusGroup", false);
-	    session.setAttribute("editStatusGroup", false);
-	    session.removeAttribute("editGroup");
-	    session.removeAttribute("group");
-	    tableStatusBean = new TableStatusBean(false, false, true, false);
-	    break;
-	case DATA_GROUPS_TABLE:
-	    session.setAttribute("dataGroupsTable", dataGroupsService.loadAllDataGroups());
-	    session.setAttribute("addStatusDataGroup", false);
-	    session.setAttribute("editStatusDataGroup", false);
-	    session.removeAttribute("dataGroup");
-	    tableStatusBean = new TableStatusBean(false, false, false, true);
-	    break;
 	case ADD_USER:
 	    session.setAttribute("editStatus", false);
 	    session.setAttribute("addStatus", true);
 	    session.removeAttribute("editUser");
 	    session.removeAttribute("user");
-	    tableStatusBean = new TableStatusBean(true, false, false, false);
 	    break;
 	case ADD_COURSE:
 	    session.setAttribute("editStatusCourse", false);
 	    session.setAttribute("addStatusCourse", true);
 	    session.removeAttribute("editCourse");
 	    session.removeAttribute("course");
-	    tableStatusBean = new TableStatusBean(false, true, false, false);
 	    break;
 	case ADD_GROUP:
 	    session.setAttribute("editStatusGroup", false);
@@ -248,7 +191,6 @@ public class AdminController extends HttpServlet {
 	    session.removeAttribute("group");
 	    session.setAttribute("teacher", usersService.loadAllTeacher());
 	    session.setAttribute("course", coursesService.loadAllCourses());
-	    tableStatusBean = new TableStatusBean(false, false, true, false);
 	    break;
 	case ADD_DATA_GROUP:
 	    session.setAttribute("editStatusDataGroup", false);
@@ -256,7 +198,6 @@ public class AdminController extends HttpServlet {
 	    session.removeAttribute("dataGroup");
 	    session.setAttribute("listener", usersService.loadAllListener());
 	    session.setAttribute("group", groupsService.loadAllGroupsNotClose());
-	    tableStatusBean = new TableStatusBean(false, false, false, true);
 	    break;
 	case SAVE_USER:
 	    UserBean userBean = createUserBean(request);
@@ -273,7 +214,6 @@ public class AdminController extends HttpServlet {
 		userBean.setErrorMessage(ERROR_MESSAGE);
 	    }
 	    session.setAttribute("user", userBean);
-	    tableStatusBean = new TableStatusBean(true, false, false, false);
 	    break;
 	case SAVE_COURSE:
 	    CourseBean coursesBean = createCourseBean(request);
@@ -290,7 +230,6 @@ public class AdminController extends HttpServlet {
 		coursesBean.setErrorMessage(ERROR_MESSAGE);
 	    }
 	    session.setAttribute("course", coursesBean);
-	    tableStatusBean = new TableStatusBean(false, true, false, false);
 	    break;
 	case SAVE_GROUP:
 	    GroupBean groupBeanSG = createGroupBean(request);
@@ -305,7 +244,6 @@ public class AdminController extends HttpServlet {
 		groupBeanSG.setErrorMessage(ERROR_MESSAGE);
 	    }
 	    session.setAttribute("group", groupBeanSG);
-	    tableStatusBean = new TableStatusBean(false, false, true, false);
 	    break;
 	case SAVE_DATA_GROUP:
 	    DataGroupBean bean = createDataGroupBean(request);
@@ -318,7 +256,6 @@ public class AdminController extends HttpServlet {
 		bean.setErrorMessage(ERROR_MESSAGE);
 	    }
 	    session.setAttribute("dataGroup", bean);
-	    tableStatusBean = new TableStatusBean(false, false, false, true);
 	    break;
 	case UPDATE_USER:
 	    UserBean updateUserBean = createUserBean(request);
@@ -336,7 +273,6 @@ public class AdminController extends HttpServlet {
 		updateUserBean.setErrorMessage(ERROR_MESSAGE);
 	    }
 	    session.setAttribute("user", updateUserBean);
-	    tableStatusBean = new TableStatusBean(true, false, false, false);
 	    break;
 	case UPDATE_COURSE:
 	    CourseBean updateCoursesBean = createCourseBean(request);
@@ -353,7 +289,6 @@ public class AdminController extends HttpServlet {
 		updateCoursesBean.setErrorMessage(ERROR_MESSAGE);
 	    }
 	    session.setAttribute("course", updateCoursesBean);
-	    tableStatusBean = new TableStatusBean(false, true, false, false);
 	    break;
 	case UPDATE_GROUP:
 	    GroupBean groupBean = createGroupBean(request);
@@ -361,7 +296,6 @@ public class AdminController extends HttpServlet {
 	    session.setAttribute("editStatusGroup", false);
 	    session.setAttribute("group", groupsService.editGroup(groupBean));
 	    session.setAttribute("groupsTable", groupsService.loadAllGroups());
-	    tableStatusBean = new TableStatusBean(false, false, true, false);
 	    break;
 	case UPDATE_DATA_GROUP:
 	    DataGroupBean beanUDG = createDataGroupBean(request);
@@ -369,7 +303,6 @@ public class AdminController extends HttpServlet {
 	    session.setAttribute("editStatusDataGroup", false);
 	    session.setAttribute("dataGroup", dataGroupsService.editDataGroup(beanUDG));
 	    session.setAttribute("dataGroupsTable", dataGroupsService.loadAllDataGroups());
-	    tableStatusBean = new TableStatusBean(false, false, false, true);
 	    break;
 	case EDIT_USERS:
 	    session.setAttribute("addStatus", false);
@@ -377,7 +310,6 @@ public class AdminController extends HttpServlet {
 	    session.removeAttribute("editUser");
 	    session.removeAttribute("user");
 	    session.setAttribute("editUser", usersService.loadUserDataById(Integer.parseInt(data)));
-	    tableStatusBean = new TableStatusBean(true, false, false, false);
 	    break;
 	case EDIT_COURSES:
 	    session.setAttribute("editStatusCourse", true);
@@ -385,7 +317,6 @@ public class AdminController extends HttpServlet {
 	    session.removeAttribute("editCourse");
 	    session.removeAttribute("course");
 	    session.setAttribute("editCourse", coursesService.loadCourseById(Integer.parseInt(data)));
-	    tableStatusBean = new TableStatusBean(false, true, false, false);
 	    break;
 	case EDIT_GROUPS:
 	    session.setAttribute("addStatusGroup", false);
@@ -394,7 +325,6 @@ public class AdminController extends HttpServlet {
 	    session.setAttribute("editGroup", groupsService.loadGroupById(Integer.parseInt(data)));
 	    session.setAttribute("teacher", usersService.loadAllTeacher());
 	    session.setAttribute("course", coursesService.loadAllCourses());
-	    tableStatusBean = new TableStatusBean(false, false, true, false);
 	    break;
 	case EDIT_DATA_GROUP:
 	    session.setAttribute("addStatusDataGroup", false);
@@ -403,34 +333,30 @@ public class AdminController extends HttpServlet {
 	    session.setAttribute("editDataGroup", dataGroupsService.loadDataGroupsById(Integer.parseInt(data)));
 	    session.setAttribute("listener", usersService.loadAllListener());
 	    session.setAttribute("group", groupsService.loadAllGroupsNotClose());
-	    tableStatusBean = new TableStatusBean(false, false, false, true);
 	    break;
 	case DELETE_USERS:
 	    usersService.deleteUser(Integer.parseInt(data));
 	    session.setAttribute("userTable", usersService.loadAllUsers());
-	    tableStatusBean = new TableStatusBean(true, false, false, false);
 	    break;
 	case DELETE_COURSES:
 	    coursesService.deleteCourse(Integer.parseInt(data));
 	    session.setAttribute("coursesTable", coursesService.loadAllCourses());
-	    tableStatusBean = new TableStatusBean(false, true, false, false);
 	    break;
 	case DELETE_GROUPS:
 	    groupsService.deleteGroup(Integer.parseInt(data));
 	    session.setAttribute("groupsTable", groupsService.loadAllGroups());
-	    tableStatusBean = new TableStatusBean(false, false, true, false);
 	    break;
 	case DELETE_DATA_GROUP:
 	    dataGroupsService.deleteDataGroup(Integer.parseInt(data));
 	    session.setAttribute("dataGroupsTable", dataGroupsService.loadAllDataGroups());
-	    tableStatusBean = new TableStatusBean(false, false, false, true);
 	    break;
 	default:
 	    session.setAttribute("userTable", usersService.loadAllUsers());
-	    tableStatusBean = new TableStatusBean(true, false, false, false);
+	    session.setAttribute("coursesTable", coursesService.loadAllCourses());
+	    session.setAttribute("groupsTable", groupsService.loadAllGroups());
+	    session.setAttribute("dataGroupsTable", dataGroupsService.loadAllDataGroups());
 	    break;
 	}
-	session.setAttribute(TABLE_STATUS, tableStatusBean);
 	response.sendRedirect("admin.html");
     }
 

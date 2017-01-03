@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="style/admin.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="/script/admin.js"></script>
 </head>
 <body>
 	<form action="admin.do" method="post" autocomplete="off">
@@ -29,21 +30,21 @@
 		</div>
 		<div class="content">
 			<div class="table_btn">
-				<button type="submit" class="btn btn-info" name="users table" value="users table">Users Table</button>
-				<button type="submit" class="btn btn-info" name="courses table" value="courses table">Courses Table</button>
-				<button type="submit" class="btn btn-info" name="groups table" value="groups table">Groups Table</button>
-				<button type="submit" class="btn btn-info" name="data groups table" value="data groups table">Data Groups Table</button>
+				<button type="button" class="btn btn-info" onclick="showTable(1)">Users Table</button>
+				<button type="button" class="btn btn-info" onclick="showTable(2)">Courses Table</button>
+				<button type="button" class="btn btn-info" onclick="showTable(3)">Groups Table</button>
+				<button type="button" class="btn btn-info" onclick="showTable(4)">Data Groups Table</button>
 			</div>
-			<div id="user-table">
+			<div id="users-table">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/user-table.jsp"></jsp:include>
 			</div>
-			<div id="course-table" hidden="hidden">
+			<div id="courses-table" hidden="true">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/course-table.jsp"></jsp:include>
 			</div>
-			<div id="group-table" hidden="hidden">
+			<div id="groups-table" hidden="true">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/group-table.jsp"></jsp:include>
 			</div>
-			<div id="data-group-table" hidden="hidden">
+			<div id="data-groups-table" hidden="true">
 				<jsp:include page="/WEB-INF/pages/private/admin/content/data-group-table.jsp"></jsp:include>
 			</div>				
 		</div>
