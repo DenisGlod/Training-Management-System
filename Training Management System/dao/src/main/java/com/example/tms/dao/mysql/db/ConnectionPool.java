@@ -16,7 +16,7 @@ public class ConnectionPool {
 		try {
 			Class.forName(DB_NAME_DRIVER);
 		} catch (ClassNotFoundException e) {
-			new RuntimeException(e);
+			throw new RuntimeException(e);
 		}
 	}
 
@@ -57,7 +57,7 @@ public class ConnectionPool {
 		if (connection != null) {
 			try {
 				connection.close();
-			} catch (SQLException e) {
+			} catch (SQLException ignored) {
 			}
 		}
 	}
@@ -66,7 +66,7 @@ public class ConnectionPool {
 		if (statement != null) {
 			try {
 				statement.close();
-			} catch (SQLException e) {
+			} catch (SQLException ignored) {
 			}
 		}
 	}
@@ -75,7 +75,7 @@ public class ConnectionPool {
 		if (resultSet != null) {
 			try {
 				resultSet.close();
-			} catch (SQLException e) {
+			} catch (SQLException ignored) {
 			}
 		}
 	}

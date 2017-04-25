@@ -1,57 +1,54 @@
 @CHARSET "UTF-8";
 
 body {
-	background-image: url(../image/bgadmin.png);
-	background-position: left bottom;
-	background-repeat: repeat;
+    background: url("../image/bgadmin.png") left bottom repeat;
 }
 
 th {
-	text-align: center;
-	background-color: #eee;
+    text-align: center;
+    background-color: #eee;
 }
 
 .table, .form_name, .center {
-	text-align: center;
+    text-align: center;
 }
 
 .scroll {
-	max-height: 500px;
-	overflow: auto;
+    max-height: 500px;
+    overflow: auto;
 }
 
 .status_bar, .content {
-	background: #fff;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 1);
-	padding: 20px;
-	border-radius: 5px;
-	margin: 2% 5% 0% 5%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    padding: 20px;
+    border-radius: 5px;
+    margin: 2% 5% 0 5%;
 }
 
 .full_name, .log_out {
-	width: 400px;
+    width: 400px;
 }
 
 .table_btn {
-	text-align: center;
-	margin-bottom: 1%
+    text-align: center;
+    margin-bottom: 1%
 }
 
 .table_status_bar {
-	width: 100%;
+    width: 100%;
 }
 
 .myalert {
-	padding: 15px;
-	border: 1px solid;
-	border-radius: 4px;
-	border-color: #b2dba1;
-	text-align: center;
-	width: 400px;
-	float: right;
+    padding: 15px;
+    border: 1px solid #b2dba1;
+    border-radius: 4px;
+    text-align: center;
+    width: 400px;
+    float: right;
 }
 
 .size_for_alert {
-	width: 400px;
-	margin: auto;
+    width: 400px;
+    margin: auto;
 }
