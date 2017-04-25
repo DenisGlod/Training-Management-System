@@ -18,7 +18,7 @@ public class CourseBean implements Serializable {
 
 	public CourseBean() {
 		super();
-		errorMessage = new ArrayList<String>();
+		errorMessage = new ArrayList<>();
 	}
 
 	public Integer getIdCourse() {

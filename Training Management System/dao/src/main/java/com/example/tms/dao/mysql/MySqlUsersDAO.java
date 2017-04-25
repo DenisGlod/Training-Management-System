@@ -18,7 +18,7 @@ public class MySqlUsersDAO extends MySqlBaseDAO implements UsersDAO {
 	@Override
 	public List<UsersEntity> loadAllUsers() throws DaoException {
 		String query = "SELECT * FROM users";
-		List<UsersEntity> result = new ArrayList<UsersEntity>();
+		List<UsersEntity> result = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;

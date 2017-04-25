@@ -18,7 +18,7 @@ public class MySqlCoursesListDAO implements CoursesListDAO {
 	@Override
 	public List<CoursesListEntity> loadAllCourses() throws DaoException {
 		String query = "SELECT * FROM courses_list;";
-		List<CoursesListEntity> result = new ArrayList<CoursesListEntity>();
+		List<CoursesListEntity> result = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;

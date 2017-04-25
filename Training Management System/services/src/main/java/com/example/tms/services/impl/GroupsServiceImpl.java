@@ -19,7 +19,7 @@ public class GroupsServiceImpl implements GroupsService {
 
 	@Override
 	public List<GroupBean> loadAllGroups() {
-		List<GroupBean> reslt = new ArrayList<GroupBean>();
+		List<GroupBean> reslt = new ArrayList<>();
 
 		UserDataDAO userDataDAO = DAOFactory.getFactory().getUserDataDAO();
 		CoursesListDAO coursesListDAO = DAOFactory.getFactory().getCoursesListDAO();
@@ -55,7 +55,7 @@ public class GroupsServiceImpl implements GroupsService {
 	
 	@Override
 	public List<GroupBean> loadAllGroupsNotClose() {
-		List<GroupBean> result = new ArrayList<GroupBean>();
+		List<GroupBean> result = new ArrayList<>();
 		List<GroupBean> loadAllGroups = loadAllGroups();
 		for (GroupBean groupBean : loadAllGroups) {
 			if (!groupBean.getStatusGroup().equals("close")) {

@@ -21,7 +21,7 @@ public class DataGroupBean implements Serializable {
 
 	public DataGroupBean() {
 		super();
-		errorMessage = new ArrayList<String>();
+		errorMessage = new ArrayList<>();
 	}
 
 	public Integer getIdDataGroup() {

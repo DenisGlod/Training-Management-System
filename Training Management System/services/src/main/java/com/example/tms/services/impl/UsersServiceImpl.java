@@ -35,7 +35,7 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public List<UserBean> loadAllUsers() {
-		List<UserBean> result = new ArrayList<UserBean>();
+		List<UserBean> result = new ArrayList<>();
 		UsersDAO usersDAO = DAOFactory.getFactory().getUsersDAO();
 		UserDataDAO userDataDAO = DAOFactory.getFactory().getUserDataDAO();
 		List<UsersEntity> loadAllUsers = usersDAO.loadAllUsers();
@@ -53,7 +53,7 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public List<UserBean> loadAllListener() {
-		List<UserBean> result = new ArrayList<UserBean>();
+		List<UserBean> result = new ArrayList<>();
 		List<UsersEntity> usersList = DAOFactory.getFactory().getUsersDAO().loadAllUsers();
 		List<UserDataEntity> dataUsers = DAOFactory.getFactory().getUserDataDAO().loadAllUserData();
 		for (UsersEntity user : usersList) {
@@ -74,7 +74,7 @@ public class UsersServiceImpl implements UsersService {
 
 	@Override
 	public List<UserBean> loadAllTeacher() {
-		List<UserBean> result = new ArrayList<UserBean>();
+		List<UserBean> result = new ArrayList<>();
 		UsersDAO usersDAO = DAOFactory.getFactory().getUsersDAO();
 		UserDataDAO userDataDAO = DAOFactory.getFactory().getUserDataDAO();
 		List<UsersEntity> loadAllUsers = usersDAO.loadAllUsers();

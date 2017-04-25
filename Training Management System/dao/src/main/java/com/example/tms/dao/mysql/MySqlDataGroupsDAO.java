@@ -46,7 +46,7 @@ public class MySqlDataGroupsDAO implements DataGroupsDAO {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		List<DataGroupsEntity> result = new ArrayList<DataGroupsEntity>();
+		List<DataGroupsEntity> result = new ArrayList<>();
 		try {
 			connection = ConnectionPool.getPool().getConnection();
 			statement = connection.prepareStatement(query);

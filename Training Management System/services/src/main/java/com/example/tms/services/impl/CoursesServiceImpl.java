@@ -15,7 +15,7 @@ public class CoursesServiceImpl implements CoursesService {
 
 	@Override
 	public List<CourseBean> loadAllCourses() {
-		List<CourseBean> result = new ArrayList<CourseBean>();
+		List<CourseBean> result = new ArrayList<>();
 		CoursesListDAO coursesListDAO = DAOFactory.getFactory().getCoursesListDAO();
 		List<CoursesListEntity> loadAllCourses = coursesListDAO.loadAllCourses();
 		for (CoursesListEntity course : loadAllCourses) {

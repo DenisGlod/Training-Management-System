@@ -21,7 +21,7 @@ public class UserBean implements Serializable {
 
 	public UserBean() {
 		super();
-		errorMessage = new ArrayList<String>();
+		errorMessage = new ArrayList<>();
 	}
 
 	public Integer getIdUser() {

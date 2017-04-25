@@ -5,10 +5,10 @@
 <head>
 	<meta charset="utf-8">
 	<title>TMS - Admin</title>
-	<link rel="shortcut icon" href="image/icon.png">
+	<link rel="shortcut icon" href="/image/icon.png">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-	<link rel="stylesheet" href="style/admin.css">
+	<link rel="stylesheet" href="/style/admin.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="/script/admin.js"></script>
@@ -24,7 +24,7 @@
 						</button>
 					</td>
 					<td class="form_name"><h4><strong>TMS - Administrator control panel</strong></h4></td>
-					<td class="full_name"><div class="myalert alert-success"><strong><c:out value="${userLogin.getFullName()}"></c:out></strong></div></td>
+					<td class="full_name"><div class="myalert alert-success"><strong><c:out value="${userLogin.getFullName()}"/></strong></div></td>
 				</tr>
 			</table>
 		</div>
@@ -36,16 +36,16 @@
 				<button type="button" class="btn btn-info" onclick="showTable(4)">Data Groups Table</button>
 			</div>
 			<div id="users-table">
-				<jsp:include page="/WEB-INF/pages/private/admin/content/user-table.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/pages/private/admin/content/user-table.jsp"/>
 			</div>
 			<div id="courses-table" hidden="true">
-				<jsp:include page="/WEB-INF/pages/private/admin/content/course-table.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/pages/private/admin/content/course-table.jsp"/>
 			</div>
 			<div id="groups-table" hidden="true">
-				<jsp:include page="/WEB-INF/pages/private/admin/content/group-table.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/pages/private/admin/content/group-table.jsp"/>
 			</div>
 			<div id="data-groups-table" hidden="true">
-				<jsp:include page="/WEB-INF/pages/private/admin/content/data-group-table.jsp"></jsp:include>
+				<jsp:include page="/WEB-INF/pages/private/admin/content/data-group-table.jsp"/>
 			</div>				
 		</div>
 	</form>

@@ -17,7 +17,7 @@ public class DataGroupsImpl implements DataGroupsService {
 
 	@Override
 	public List<DataGroupBean> loadAllDataGroups() {
-		List<DataGroupBean> result = new ArrayList<DataGroupBean>();
+		List<DataGroupBean> result = new ArrayList<>();
 
 		List<DataGroupsEntity> dataGroups = DAOFactory.getFactory().getDataGroupsDAO().loadAllDataGroups();
 		List<UserDataEntity> userData = DAOFactory.getFactory().getUserDataDAO().loadAllUserData();

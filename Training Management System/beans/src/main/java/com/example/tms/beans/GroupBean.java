@@ -21,7 +21,7 @@ public class GroupBean implements Serializable {
 
 	public GroupBean() {
 		super();
-		errorMessage = new ArrayList<String>();
+		errorMessage = new ArrayList<>();
 	}
 
 	public Integer getIdGroup() {

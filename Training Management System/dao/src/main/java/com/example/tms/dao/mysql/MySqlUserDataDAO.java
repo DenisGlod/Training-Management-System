@@ -22,7 +22,7 @@ public class MySqlUserDataDAO implements UserDataDAO {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		List<UserDataEntity> result = new ArrayList<UserDataEntity>();
+		List<UserDataEntity> result = new ArrayList<>();
 		try {
 			connection = ConnectionPool.getPool().getConnection();
 			statement = connection.prepareStatement(query);
