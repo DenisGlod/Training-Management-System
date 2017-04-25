@@ -18,7 +18,7 @@ public class MySqlGroupsDAO implements GroupsDAO {
 	@Override
 	public List<GroupsEntity> loadAllGroups() throws DaoException {
 		String query = "SELECT * FROM groups;";
-		List<GroupsEntity> result = new ArrayList<GroupsEntity>();
+		List<GroupsEntity> result = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -40,7 +40,7 @@ public class MySqlGroupsDAO implements GroupsDAO {
 	@Override
 	public List<GroupsEntity> loadGroupByIdTeacher(Integer idTeacher) throws DaoException {
 		String query = "SELECT * FROM groups WHERE id_teacher = ?;";
-		List<GroupsEntity> result = new ArrayList<GroupsEntity>();
+		List<GroupsEntity> result = new ArrayList<>();
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
